@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -148,12 +150,13 @@ public class ProdottoDao implements ProdottoDaoInterfaccia{
 	public synchronized ArrayList<ProdottoBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
+	    List<String> allowedOrders = Arrays.asList("nome", "quantità", "dataUscita", "prezzo"); //aggiungo una whitelist di valori possibili
 
 		ArrayList<ProdottoBean> products = new ArrayList<ProdottoBean>();
 
 		String selectSQL = "SELECT * FROM " + ProdottoDao.TABLE_NAME;
 
-		if (order != null && !order.equals("")) {
+		if (order != null && !order.equals("")&& allowedOrders.contains(order)) {
 			selectSQL += " ORDER BY " + order;
 		}
 
