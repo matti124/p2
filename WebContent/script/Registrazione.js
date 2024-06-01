@@ -9,13 +9,13 @@ function checkNomeCognome(inputtxt) {
 	return false;	
 }
 
-
 function checkEmail(inputtxt) {
-	var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if(inputtxt.value.match(email)) 
-		return true;
-	
-	return false;	
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+
+    if (emailRegex.test(inputtxt)) {
+        return true;
+    }
+    return false;
 }
 
 
