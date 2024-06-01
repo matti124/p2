@@ -10,12 +10,14 @@ function checkNomeCognome(inputtxt) {
 }
 
 function checkEmail(inputtxt) {
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (emailRegex.test(inputtxt)) {
-        return true;
-    }
-    return false;
+  // parte del id-4 non aggiunta nel commit
+  if (emailRegex.test(inputtxt.value.toLowerCase())) {
+    return true;
+  }
+
+  return false;
 }
 
 
